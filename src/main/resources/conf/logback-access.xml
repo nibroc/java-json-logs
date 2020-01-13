@@ -1,0 +1,20 @@
+<configuration>
+	<!-- always a good activate OnConsoleStatusListener -->
+	<statusListener class="ch.qos.logback.core.status.OnConsoleStatusListener" />
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder class="net.logstash.logback.encoder.LogstashAccessEncoder">
+			<fieldNames>
+				<requestHeaders>request_headers</requestHeaders>
+				<responseHeaders>response_headers</responseHeaders>
+			</fieldNames>
+			<lowerCaseHeaderNames>true</lowerCaseHeaderNames>
+			
+			<customFields>
+				{"app_name": "json-logs"}
+			</customFields>
+		</encoder>
+	</appender>
+
+	<appender-ref ref="STDOUT" />
+</configuration>
